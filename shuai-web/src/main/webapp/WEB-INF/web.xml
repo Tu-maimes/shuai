@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>shuai-web</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- 扫描config下的spring/applicationContext类的文件 -->
+  <context-param>
+  <param-name>contextConfigLocation</param-name>
+  <param-value>classpath*:spring/applicationContext-*.xml</param-value>
+  </context-param>
+  <!-- Context域的监听器,作用是当当Context域被创建时就去扫描config下的文件 -->
+  <listener>
+  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <!-- web的前端控制器,将前端控制器配进来 -->
+  <servlet>
+  <servlet-name>DispatcherServlet</servlet-name>
+  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  <init-param>
+  <!-- 初始化参数,controller层寻找spring/springmvc.xml文件 -->
+  <param-name>contextConfigLocation</param-name>
+  <param-value>classpath:spring/springmvc.xml</param-value>
+  </init-param>
+  </servlet>
+  <servlet-mapping>
+  <!-- 对于是以*.action的请求进行拦截,交给DispatcherServlet来处理 -->
+  <servlet-name>DispatcherServlet</servlet-name>
+  <url-pattern>*.action</url-pattern>
+  </servlet-mapping>
+  <filter>
+  <!-- 过滤器 ,设置全局编码-->
+  <filter-name>CharacterEncodingFilter</filter-name>
+  <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+  <init-param>
+  <!-- 初始化全局参数 -->
+  <param-name>encoding</param-name>
+  <param-value>UTF-8</param-value>
+  </init-param>
+  </filter>
+  <filter-mapping>
+  <!-- 拦截所有 -->
+  <filter-name>CharacterEncodingFilter</filter-name>
+  <url-pattern>*.action</url-pattern>
+  </filter-mapping>
+</web-app>
