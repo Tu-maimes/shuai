@@ -27,4 +27,15 @@ public interface VideoService {
 
 	List<Statistics> selectStaistics();
 
+	List<Video> selectVideoP(Integer id);
+
+	Video selectVideo(int videoId);
+
+	List<VideoAll> selectContents(Integer courseId);
+
+	void addVideoStateCount(int videoId);
+
+
+//	List<VideoAll> selectVideoCourse(int subjectId);
+
 }

@@ -30,6 +30,7 @@
     <result column="video_play_times" property="videoPlayTimes" jdbcType="INTEGER" />
     <result column="course_name" property="courseName" jdbcType="VARCHAR" />
     <result column="speaker_name" property="speakerName" jdbcType="VARCHAR" />
+    <result column="subject_id" property="subjectId" jdbcType="INTEGER" />
     
     
     <!-- <association property="sperker" javaType="com.zhiyou100.video.model.Speaker">
@@ -45,6 +46,32 @@
   <result column="video_play_times" property="avg" jdbcType="INTEGER" />
   <result column="course_name" property="courseName" jdbcType="INTEGER" />
   </resultMap>
+  
+  
+  <!-- <resultMap id="VideoCourse" type="com.zhiyou100.video.model.Video" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="video_title" property="videoTitle" jdbcType="VARCHAR" />
+    <result column="speaker_id" property="speakerId" jdbcType="INTEGER" />
+    <result column="course_id" property="courseId" jdbcType="INTEGER" />
+    <result column="video_length" property="videoLength" jdbcType="INTEGER" />
+    <result column="video_image_url" property="videoImageUrl" jdbcType="VARCHAR" />
+    <result column="video_url" property="videoUrl" jdbcType="VARCHAR" />
+    <result column="video_descr" property="videoDescr" jdbcType="VARCHAR" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="video_play_times" property="videoPlayTimes" jdbcType="INTEGER" />
+    <collection property="course" ofType="com.zhiyou100.video.model.Course">
+    <id column="id" property="id"/>
+    <result column="course_name" property="courseName"/>
+    <result column="course_descr" property="courseDescr"/>
+    
+    </collection>
+  </resultMap>  -->
+  
+  
+  
+  
+  
   
   <sql id="Example_Where_Clause" >
     <where >
@@ -377,10 +404,23 @@
   </where>
   </select>
   
+ <!--  <select id="selectVideoCourse" resultMap="VideoCourse">
+  select c.course_name,c.course_descr,v.id,v.video_url,v.video_title,v.video_length,v.video_play_times from course c 
+left join video v on v.course_id=c.id where subject_id =#{subjectId}
   
   
+  </select>
+   -->
+  <select id="selectContents" resultMap="BaseResult">
+  select v.*,c.subject_id subjectId,s.speaker_name speakerName from 
+  video v left join course c on  v.course_id = c.id 
+  left join speaker s on v.speaker_id = s.id where v.course_id = #{courseId}
+  </select>
+  <update id="addVideoStateCount">
+  update video set video_play_times = video_play_times+1 where id=#{video_play_times}
   
   
+  </update>
   
   
   

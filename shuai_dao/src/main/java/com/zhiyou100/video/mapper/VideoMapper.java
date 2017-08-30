@@ -37,4 +37,11 @@ public interface VideoMapper {
 	Integer selectVideoCount(VideoFind vf);
 
 	List<Statistics> selectStaistics();
+
+	List<VideoAll> selectContents(@Param("courseId") Integer courseId);
+
+	void addVideoStateCount(@Param("videoId")int videoId);
+
+
+//	List<VideoAll> selectVideoCourse(@Param("subjectId")int subjectId);
 }

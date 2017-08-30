@@ -64,6 +64,29 @@ public class Impl implements VideoService {
 		
 		return vm.selectStaistics();
 	}
+//	@Override
+//	public List<VideoAll> selectVideoCourse(int subjectId) {
+//		return vm.selectVideoCourse(subjectId);
+//	}
+	@Override
+	public List<Video> selectVideoP(Integer id) {
+		VideoExample example = new VideoExample();
+		example.createCriteria().andCourseIdEqualTo(id);
+		return vm.selectByExample(example);
+	}
+	@Override
+	public Video selectVideo(int videoId) {
+		return vm.selectByPrimaryKey(videoId);
+	}
+	@Override
+	public List<VideoAll> selectContents(Integer courseId) {
+		
+		return vm.selectContents(courseId);
+	}
+	@Override
+	public void addVideoStateCount(int videoId) {
+		vm.addVideoStateCount(videoId);
+	}
 	
 
 }

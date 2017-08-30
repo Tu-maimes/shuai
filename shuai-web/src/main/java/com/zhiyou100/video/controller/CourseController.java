@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zhiyou100.video.model.Course;
 import com.zhiyou100.video.model.Subject;
@@ -41,11 +42,12 @@ public class CourseController {
 		return "course/coursemanage";
 		
 	}
-	@RequestMapping("/delete/{id}.action")
-	public String deleteById(@PathVariable Integer id){
+	@RequestMapping("/delete/delete.action")
+	@ResponseBody
+	public String deleteById( Integer id){
 		 cs.deleteIdcourse(id);
 		
-		return "redirect:/course/courseList.action";
+		return "success";
 		
 	}
 	@RequestMapping("/coursemanage.action")

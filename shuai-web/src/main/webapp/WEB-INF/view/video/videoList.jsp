@@ -8,14 +8,13 @@
     <meta charset="utf-8">
     <title>视频列表</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-confirm.min.css"/>
     <script src="${pageContext.request.contextPath}/js/jquery-1.12.4.min.js"/></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"/></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-confirm.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/css/jquery-confirm.css"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-confirm.js"></script>
    <script type="text/javascript">
-   $(function(){
 	    var count = 0;
-	    var countp =0;
+    $(function(){
 	      	$(".clickk").click(function(){
 	      		 if(this.checked==true){
 	      			count++;
@@ -44,7 +43,63 @@
 	      	$(".badge").text(count);
 	      	});
 	      	
-	      });
+	      }); 
+	       function deleteAll1(){
+	    	  
+		   	    if(count == 0){
+		   		$.alert({
+				    title: '警告',
+				    content: '没选中,删什么删', 
+				});
+		   			 return;
+		   		 }$.confirm({
+		 		    title: '提示',
+				    content: '看清哦,可是全部删除!!',
+				    buttons: {
+				        confirm: {
+				        	text: '确定',
+			
+				        	action: function () {
+				           		$("#kkk").submit();
+				        	}
+				        },
+				                 取消: function () {
+				           
+				        }
+				       
+				    }
+				}); 
+	   	   } 
+   function deleteInfo(id){
+		 $.confirm({
+			    title: '提示',
+			    content: '是否删除',
+			    buttons: {
+			        confirm: {
+			        	text: '确定',
+			        	action: function () {
+			           		$.ajax({
+			           			url:"${pageContext.request.contextPath}/video/delete/delete.action",
+			           			dataType:"text",
+			           			type:"post",
+			           			data:{"id":id},
+			           			success:function(msg){
+			           				if(msg=="success"){
+			           					location.reload();
+			           				}
+			           			}
+			           		});
+			        	}
+			        },
+			                 取消: function () {
+			           
+			        }
+			       
+			    }
+			});
+	 }  
+	   	        	  
+  
    </script> 
   </head>
   <body>
@@ -110,10 +165,11 @@
         	
         	
         	
-		    <form action="${pageContext.request.contextPath}/video/deleteAll.action">
-		     <a href="${pageContext.request.contextPath}/video/videoadd.action"><button type="checkbox" class="btn btn-primary">添加视频</button></a>
-			<button type="submit" class="btn btn-primary" onclick = "return shouconfirm()">
+		    
+		     <a href="${pageContext.request.contextPath}/video/videoadd.action"><button type="button" class="btn btn-primary">添加视频</button></a>
+			<button  class="btn btn-primary twitte" onclick="deleteAll1()">
 		    <font color="white">批量删除</font>&nbsp;&nbsp;<span class="badge">0</span></button>
+		    <form action="${pageContext.request.contextPath}/video/deleteAll.action" id="kkk">
 			<div class="bs-example" data-example-id="hoverable-table">
 			    <table class="table table-hover">
 			      <thead>
@@ -144,7 +200,7 @@
 			          <td>${video.videoPlayTimes}</td>
 			          <td><a href="${pageContext.request.contextPath}/video/${video.id}.action" class="glyphicon glyphicon-edit"></a></td>
 			          <%-- <td><a class="glyphicon glyphicon-trash" title="删除" onclick="shouconfirm(${video.id})"></a></td> --%>
-			          <td><a href="${pageContext.request.contextPath}/video/delete/${video.id}.action" onclick = "return shouconfirm()" class="glyphicon glyphicon-trash"></a></td>
+			          <td><a class="twitter glyphicon glyphicon-trash" data-title="提示!!"  onclick="deleteInfo(${video.id})" ></a></td>
 			        </tr>
 			          </c:forEach>
 			         

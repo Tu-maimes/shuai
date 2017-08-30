@@ -1,6 +1,5 @@
 package com.zhiyou100.video.mapper;
 
-import com.zhiyou100.video.model.PackagingGroup;
 import com.zhiyou100.video.model.Speaker;
 import com.zhiyou100.video.model.SpeakerExample;
 import java.util.List;

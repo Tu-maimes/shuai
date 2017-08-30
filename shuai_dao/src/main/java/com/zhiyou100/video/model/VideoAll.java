@@ -28,6 +28,14 @@ public class VideoAll {
 	    private Integer videoPlayTimes;
 	    private String speakerName;
 	    private String courseName;
+	    private Integer subjectId;
+	    
+		public Integer getSubjectId() {
+			return subjectId;
+		}
+		public void setSubjectId(Integer subjectId) {
+			this.subjectId = subjectId;
+		}
 		public Integer getId() {
 			return id;
 		}
@@ -124,7 +132,7 @@ public class VideoAll {
 					+ courseId + ", videoLength=" + videoLength + ", videoImageUrl=" + videoImageUrl + ", videoUrl="
 					+ videoUrl + ", videoDescr=" + videoDescr + ", insertTime=" + insertTime + ", updateTime="
 					+ updateTime + ", course=" + course + ", sperker=" + sperker + ", videoPlayTimes=" + videoPlayTimes
-					+ ", speakerName=" + speakerName + ", courseName=" + courseName + "]";
+					+ ", speakerName=" + speakerName + ", courseName=" + courseName + ", subjectId=" + subjectId + "]";
 		}
 		
 	    

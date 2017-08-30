@@ -19,4 +19,6 @@ public interface CourseService {
 		void courseAdd(Course co);
 
 		List<Course> selectCourseName();
+
+		List<Course> selectCs(int subjectId);
 }

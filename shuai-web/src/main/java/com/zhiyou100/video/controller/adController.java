@@ -40,4 +40,8 @@ public class adController {
 		admin.invalidate();
 		return "redirect:/login.jsp";
 	}
+	@RequestMapping("/adminMan/login.action")
+	public String login(HttpSession admin){
+		return "redirect:/login.jsp";
+	}
 }

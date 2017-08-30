@@ -1,6 +1,7 @@
 package com.zhiyou100.video.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Course {
     private Integer id;
@@ -14,7 +15,7 @@ public class Course {
     private Date updateTime;
 
     private Integer subjectId;
-  
+    private List<Video> videoList;
 
 	public Integer getId() {
         return id;
@@ -24,7 +25,15 @@ public class Course {
         this.id = id;
     }
 
-    public String getCourseName() {
+    public List<Video> getVideoList() {
+		return videoList;
+	}
+
+	public void setVideoList(List<Video> videoList) {
+		this.videoList = videoList;
+	}
+
+	public String getCourseName() {
         return courseName;
     }
 

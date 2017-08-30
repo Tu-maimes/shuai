@@ -10,15 +10,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>课程列表</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-confirm.min.css"/>
     <script src="${pageContext.request.contextPath}/js/jquery-1.12.4.min.js"/></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"/></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-confirm.js"></script>
     
  	<script type="text/javascript">
- 	
-    function shouconfirm(){
-    	var r = confirm("你确认要删除吗?");
-    	return r;
-    }
+ 	/*  $(function(){
+         $(".twitter").confirm({
+ 		    title: '提示',
+ 	    content: '确认要删除吗',
+ 	    buttons: {
+ 	        confirm: {
+ 	        	text: '确定',
+ 	        	action: function () {
+ 	        		location.href = this.$target.attr('href');
+ 	        	}
+ 	        },
+ 	                 取消: function () {
+ 	           
+ 	        }
+ 	       
+ 	    }
+ 		}); 
+     
+     }); */
+     function deleteInfo(id){
+		 $.confirm({
+			    title: '提示',
+			    content: '是否删除',
+			    buttons: {
+			        confirm: {
+			        	text: '确定',
+			        	action: function () {
+			           		$.ajax({
+			           			url:"${pageContext.request.contextPath}/course/delete/delete.action",
+			           			dataType:"text",
+			           			type:"post",
+			           			data:{"id":id},
+			           			success:function(msg){
+			           				if(msg=="success"){
+			           					location.reload();
+			           				}
+			           			}
+			           		});
+			        	}
+			        },
+			                 取消: function () {
+			           
+			        }
+			       
+			    }
+			});
+	 }  
     
     </script>
  	
@@ -79,7 +123,7 @@
 			          <td>${course.subjectName}</td>
 			          <td>${course.courseDescr}</td>
 			          <td><a href="${pageContext.request.contextPath}/course/${course.id}.action" class="glyphicon glyphicon-edit"></a></td>
-			          <td><a href="${pageContext.request.contextPath}/course/delete/${course.id}.action" onclick = "return shouconfirm()" class="glyphicon glyphicon-trash"></a></td>
+			          <td><a onclick="deleteInfo(${course.id})"  class="glyphicon glyphicon-trash twitter"></a></td>
 			        </tr>
 			          </c:forEach>
 			      </tbody>

@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zhiyou100.video.model.Course;
 import com.zhiyou100.video.model.Speaker;
@@ -54,11 +55,11 @@ public class VideoController {
 			
 			return "/video/videoList";
 		}
-	
-			@RequestMapping("/delete/{id}.action")
-			public String deleteId(@PathVariable Integer id){
+			@RequestMapping("/delete/delete.action")
+			@ResponseBody
+			public String deleteId(Integer id){
 				vs.deleteId(id);
-				return "redirect:/video/videoList.action";
+				return "success";
 				
 			}
 			

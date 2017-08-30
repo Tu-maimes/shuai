@@ -2,6 +2,7 @@ package com.zhiyou100.video.mapper;
 
 import com.zhiyou100.video.model.Subject;
 import com.zhiyou100.video.model.SubjectExample;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +28,6 @@ public interface SubjectMapper {
     int updateByPrimaryKeySelective(Subject record);
 
     int updateByPrimaryKey(Subject record);
+
+
 }

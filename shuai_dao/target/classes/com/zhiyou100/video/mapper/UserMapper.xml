@@ -320,4 +320,18 @@
       captcha = #{captcha,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  
+  <update id="sendemail" parameterType="com.zhiyou100.video.model.User">
+  
+  update user set captcha=#{captcha} where email=#{email}
+  
+  
+  </update>
+  
+  
+  
+  
+  
+  
 </mapper>

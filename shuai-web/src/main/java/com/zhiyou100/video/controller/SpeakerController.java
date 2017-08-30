@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zhiyou100.video.model.Speaker;
 import com.zhiyou100.video.service.SpeakerService;
@@ -44,10 +45,11 @@ public class SpeakerController {
 		return "redirect:/speaker/speakerList.action";
 		
 	}
-	@RequestMapping("/delete/{id}.action")
-	public String deleteId(@PathVariable Integer id){
+	@RequestMapping("/delete/delete.action")
+	@ResponseBody
+	public String deleteId( Integer id){
 		ss.deleteId(id);
-		return "redirect:/speaker/speakerList.action";
+		return "success";
 		
 	}
 	@RequestMapping("/speakeradd.action")

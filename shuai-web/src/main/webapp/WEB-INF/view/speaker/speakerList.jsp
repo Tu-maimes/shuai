@@ -10,14 +10,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>主讲人列表</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-confirm.min.css"/>
     <script src="${pageContext.request.contextPath}/js/jquery-1.12.4.min.js"/></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"/></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-confirm.js"></script>
     <script type="text/javascript">
-    function shouconfirm(){
-    	var r = confirm("你确认要删除吗?");
-    	return r;
-    }
-    
+    function deleteInfo(id){
+		 $.confirm({
+			    title: '提示',
+			    content: '是否删除',
+			    buttons: {
+			        confirm: {
+			        	text: '确定',
+			        	action: function () {
+			           		$.ajax({
+			           			url:"${pageContext.request.contextPath}/speaker/delete/delete.action",
+			           			dataType:"text",
+			           			type:"post",
+			           			data:{"id":id},
+			           			success:function(msg){
+			           				if(msg=="success"){
+			           					location.reload();
+			           				}
+			           			}
+			           		});
+			        	}
+			        },
+			                 取消: function () {
+			           
+			        }
+			       
+			    }
+			});
+	 }  
+  
     </script>
   </head>
   <body>
@@ -84,7 +110,8 @@
 			          <td>${speaker.speakerJob}</td>
 			          <td>${speaker.speakerDescr}</td>
 			          <td><a href="${pageContext.request.contextPath}/speaker/${speaker.id}.action" class="glyphicon glyphicon-edit"></a></td>
-			          <td><a href="${pageContext.request.contextPath}/speaker/delete/${speaker.id}.action" onclick = "return shouconfirm()" class="glyphicon glyphicon-trash"></a></td>
+			          <%-- <td><a href="${pageContext.request.contextPath}/speaker/delete/${speaker.id}.action" class="glyphicon glyphicon-trash twitter"></a></td> --%>
+			          <td><a class="twitter glyphicon glyphicon-trash" data-title="提示" onclick="deleteInfo(${speaker.id})"></a></td>
 			        </tr>
 			          </c:forEach>
 			      </tbody>

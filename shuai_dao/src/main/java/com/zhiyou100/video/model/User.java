@@ -2,13 +2,18 @@ package com.zhiyou100.video.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.zhiyou100.video.tools.MD5Utils.MD5Utils;
+
+
 public class User {
     private Integer id;
 
     private String nickName;
 
     private Integer sex;
-
+    @DateTimeFormat(pattern="yy-MM-dd")
     private Date birthday;
 
     private String email;
@@ -96,7 +101,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password == null ? null : MD5Utils.getMD5(password.trim());
     }
 
     public Date getInsertTime() {
@@ -122,4 +127,12 @@ public class User {
     public void setCaptcha(String captcha) {
         this.captcha = captcha == null ? null : captcha.trim();
     }
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", nickName=" + nickName + ", sex=" + sex + ", birthday=" + birthday + ", email="
+				+ email + ", province=" + province + ", city=" + city + ", headUrl=" + headUrl + ", password="
+				+ password + ", insertTime=" + insertTime + ", updateTime=" + updateTime + ", captcha=" + captcha + "]";
+	}
+    
 }

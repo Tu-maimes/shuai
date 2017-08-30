@@ -8,4 +8,5 @@ public interface SubjectService {
 	List<Subject> selectSpeaker(Subject sj);
 
 	List<Subject> selectSubject();
+
 }
