@@ -41,10 +41,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script>
         $(function () {
         	var id = $('#videoId').val();
-           $('#content').load('front/video/videoData.do?videoId='+id);
+           $('#content').load('homepage/front/video/videoData.do?videoId='+id);
            
            //播放量统计,不需要返回结果处理
-           $.get('front/video/state.do?videoId='+id);
+           $.get('homepage/front/video/state.do?videoId='+id);
 		});
     </script>
 </body>

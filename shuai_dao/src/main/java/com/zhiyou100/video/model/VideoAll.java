@@ -29,7 +29,14 @@ public class VideoAll {
 	    private String speakerName;
 	    private String courseName;
 	    private Integer subjectId;
+	    private String videoLengthStr;
 	    
+		public String getVideoLengthStr() {
+			return videoLengthStr;
+		}
+		public void setVideoLengthStr(String videoLengthStr) {
+			this.videoLengthStr = videoLengthStr;
+		}
 		public Integer getSubjectId() {
 			return subjectId;
 		}
@@ -132,7 +139,8 @@ public class VideoAll {
 					+ courseId + ", videoLength=" + videoLength + ", videoImageUrl=" + videoImageUrl + ", videoUrl="
 					+ videoUrl + ", videoDescr=" + videoDescr + ", insertTime=" + insertTime + ", updateTime="
 					+ updateTime + ", course=" + course + ", sperker=" + sperker + ", videoPlayTimes=" + videoPlayTimes
-					+ ", speakerName=" + speakerName + ", courseName=" + courseName + ", subjectId=" + subjectId + "]";
+					+ ", speakerName=" + speakerName + ", courseName=" + courseName + ", subjectId=" + subjectId
+					+ ", videoLengthStr=" + videoLengthStr + "]";
 		}
 		
 	    

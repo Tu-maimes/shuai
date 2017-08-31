@@ -14,6 +14,7 @@ import com.zhiyou100.video.model.VideoExample;
 import com.zhiyou100.video.model.VideoFind;
 import com.zhiyou100.video.service.VideoService;
 import com.zhiyou100.video.service.tools.Page;
+import com.zhiyou100.video.service.tools.VideoTime;
 @Service
 public class Impl implements VideoService {
 	@Autowired
@@ -80,7 +81,10 @@ public class Impl implements VideoService {
 	}
 	@Override
 	public List<VideoAll> selectContents(Integer courseId) {
-		
+		List<VideoAll> list=vm.selectContents(courseId);
+		for (VideoAll video : list) {
+			video.setVideoLengthStr(VideoTime.send(video.getVideoLength()));
+		}
 		return vm.selectContents(courseId);
 	}
 	@Override

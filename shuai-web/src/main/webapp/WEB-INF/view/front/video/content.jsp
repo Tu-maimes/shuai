@@ -42,12 +42,12 @@
 
 		<c:forEach items="${videoList}" var="video" >
 			<div class="chapter">
-				<p class="biaoti"><a href="front/video/index.do?videoId=${video.id}&subjectId=${video.subjectId}">${video.videoTitle}</a></p>
+				<p class="biaoti"><a href="homepage/front/video/index.do?videoId=${video.id}&subjectId=${video.subjectId}">${video.videoTitle}</a></p>
 				<p class="lecturer">${video.videoDescr}</p>
 				<p class="lecturer">讲师：${video.speakerName}</p>
 				<div class="v-info">
 					<span class="count"><img src="static/img/count.png" alt="">${video.videoPlayTimes}</span>
-					<span class="duration"><img src="static/img/player.png" alt="">${video.videoLength}</span>
+					<span class="duration"><img src="static/img/player.png" alt="">${video.videoLengthStr}</span>
 				</div>
 			</div>
 		</c:forEach>

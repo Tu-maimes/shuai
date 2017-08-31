@@ -39,6 +39,7 @@
 				<mvc:exclude-mapping path="/front/user/forgetpwd.do"/>
 				<mvc:exclude-mapping path="/front/user/forget.do"/>
 				<mvc:exclude-mapping path="/front/user/resetpwd.do"/>
+				<mvc:exclude-mapping path="/homepage/**"/>
 				<bean class="com.zhiyou100.video.web.interceptor.CustomInterceptor"/>
 			</mvc:interceptor>
 			<!-- <mvc:interceptor>

@@ -29,8 +29,8 @@ public class CourseIndexController {
 	CourseService cs;
 	@Autowired
 	SpeakerService ss;
-	@RequestMapping(value="front/course/index.do",method=RequestMethod.GET)
-	public String webCourse(Model md,int subjectId){
+	@RequestMapping(value="homepage/front/course/index.do",method=RequestMethod.GET)
+	public String webCourse(int subjectId, Model md){
 		Subject li = cis.selectCourse(subjectId);
 //		List<Course> course=cs.selectCs(subjectId);
 //		for (Course course2 : course) {
@@ -44,7 +44,7 @@ public class CourseIndexController {
 		
 	}
 	
-	@RequestMapping(value="front/video/index.do",method=RequestMethod.GET)
+	@RequestMapping(value="homepage/front/video/index.do",method=RequestMethod.GET)
 	public String videoIndex(int videoId,Model md,int subjectId){
 		Subject li = cis.selectCourse(subjectId);
 		md.addAttribute("subject", li);
@@ -52,7 +52,7 @@ public class CourseIndexController {
 		return "/front/video/index";
 		
 	}
-	@RequestMapping(value="front/video/videoData.do",method=RequestMethod.GET)
+	@RequestMapping(value="homepage/front/video/videoData.do",method=RequestMethod.GET)
 	public String videoData(int videoId,Model md){
 		Video video = vs.selectVideo(videoId);
 		Speaker speaker=ss.selectId(video.getSpeakerId());
@@ -61,12 +61,11 @@ public class CourseIndexController {
 		md.addAttribute("video", video);
 		md.addAttribute("speaker", speaker);
 		md.addAttribute("course", course);
-		md.addAttribute("course", course);
 		md.addAttribute("videoList", list);
 		return "/front/video/content";
 		
 	}
-	@RequestMapping(value="front/video/state.do",method=RequestMethod.GET)
+	@RequestMapping(value="homepage/front/video/state.do",method=RequestMethod.GET)
 	public void videoState(int videoId){
 		
 		vs.addVideoStateCount(videoId);
