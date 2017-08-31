@@ -28,14 +28,9 @@
 		<property name="maxUploadSize" value="6291456"></property>
 		</bean>
 		 <mvc:interceptors>
-		 	
 			<mvc:interceptor>
-				<mvc:mapping path="*.action"/>
+				<mvc:mapping path="/**"/>
 				<mvc:exclude-mapping path="/admin/login.action"/>
-				<bean class="com.zhiyou100.video.web.interceptor.CustomInterceptor"/>
-			</mvc:interceptor>
-			<mvc:interceptor>
-				<mvc:mapping path="*.do"/>
 				<mvc:exclude-mapping path="/front/user.do"/>
 				<mvc:exclude-mapping path="/front/user/forgetpwd.do"/>
 				<mvc:exclude-mapping path="/front/user/regist.do"/>
@@ -46,6 +41,18 @@
 				<mvc:exclude-mapping path="/front/user/resetpwd.do"/>
 				<bean class="com.zhiyou100.video.web.interceptor.CustomInterceptor"/>
 			</mvc:interceptor>
+			<!-- <mvc:interceptor>
+				<mvc:mapping path="*.do"/>
+				 <mvc:exclude-mapping path="/front/user.do"/>
+				<mvc:exclude-mapping path="/front/user/forgetpwd.do"/>
+				<mvc:exclude-mapping path="/front/user/regist.do"/>
+				<mvc:exclude-mapping path="/front/user/logink.do"/>
+				<mvc:exclude-mapping path="/sendemail.do"/>
+				<mvc:exclude-mapping path="/front/user/forgetpwd.do"/>
+				<mvc:exclude-mapping path="/front/user/forget.do"/>
+				<mvc:exclude-mapping path="/front/user/resetpwd.do"/> 
+				<bean class="com.zhiyou100.video.web.interceptor.FrontCustomInterceptor"/>
+			</mvc:interceptor> -->
 		</mvc:interceptors>
 		<bean class="com.zhiyou100.video.web.exception.CustomHandlerException"/>
 </beans>
