@@ -80,6 +80,7 @@
         	    tooltip: {
         	        trigger: 'item'
         	    },
+        	    
         	    toolbox: {
         	        show: true,
         	        feature: {
