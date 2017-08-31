@@ -10,8 +10,10 @@ import com.zhiyou100.video.mapper.CourseMapper;
 import com.zhiyou100.video.model.Course;
 import com.zhiyou100.video.model.CourseExample;
 import com.zhiyou100.video.model.CourseTow;
+import com.zhiyou100.video.model.Video;
 import com.zhiyou100.video.service.CourseService;
 import com.zhiyou100.video.service.tools.Page;
+import com.zhiyou100.video.service.tools.VideoTime;
 @Service("Course")
 public class CourseImpl implements CourseService {
 	@Autowired
@@ -59,7 +61,15 @@ public class CourseImpl implements CourseService {
 	}
 	@Override
 	public List<CourseTow> selectVideoCourse(int subjectId) {
-		return cm.selectVideoCourse(subjectId);
+		List<CourseTow> list = cm.selectVideoCourse(subjectId);
+		for (CourseTow li : list) {
+			List<Video> video= li.getVideoList();
+			for (Video vi : video) {
+				vi.setVideoLengthStr(VideoTime.send(vi.getVideoLength()));
+			}
+		}
+		
+		return list;
 	}
 	
 

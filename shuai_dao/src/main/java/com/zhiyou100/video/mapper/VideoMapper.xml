@@ -32,7 +32,6 @@
     <result column="speaker_name" property="speakerName" jdbcType="VARCHAR" />
     <result column="subject_id" property="subjectId" jdbcType="INTEGER" />
     
-    
     <!-- <association property="sperker" javaType="com.zhiyou100.video.model.Speaker">
     		<result column="speaker_name" property="speakerName"/>
     </association>

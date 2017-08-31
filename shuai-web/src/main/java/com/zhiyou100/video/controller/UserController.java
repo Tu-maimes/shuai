@@ -20,14 +20,15 @@ import org.springframework.web.multipart.MultipartFile;
 import com.zhiyou100.video.model.User;
 import com.zhiyou100.video.service.UserService;
 
+
 /**   
 *    
 * 项目名称：shuai-web   
 * 类名称：UserController   
-* 类描述：   前台用户web
-* 创建时间：2017年8月30日 下午9:32:22   
+* 类描述：   
+* 创建时间：2017年8月31日 下午5:20:10   
 * 修改人：汪帅   
-* 修改时间：2017年8月30日 下午9:32:22   
+* 修改时间：2017年8月31日 下午5:20:10   
 * 修改备注：   
 * @version    
 *    

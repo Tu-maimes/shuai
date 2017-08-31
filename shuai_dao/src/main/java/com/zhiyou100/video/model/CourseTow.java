@@ -13,10 +13,12 @@ public class CourseTow {
 	    private Date insertTime;
 
 	    private Date updateTime;
-
+	    
 	    private Integer subjectId;
 	    private String  subjectName;
 	    private List<Video> videoList;
+	    
+		
 		public Integer getId() {
 			return id;
 		}

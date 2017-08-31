@@ -11,7 +11,6 @@ public class CustomHandlerException implements HandlerExceptionResolver {
 	@Override
 	public ModelAndView resolveException(HttpServletRequest req, HttpServletResponse res, Object obj,
 			Exception exception) {
-		System.out.println(req+"--"+res+"****"+obj+"++++"+exception);
 		ModelAndView view = new ModelAndView();
 		view.addObject("obj",obj);
 		view.addObject("error",exception);

@@ -1,7 +1,5 @@
 package com.zhiyou100.video.controller;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,10 +38,6 @@ public class CourseIndexController {
 //		}
 	
 		List<CourseTow> list= cs.selectVideoCourse(subjectId);
-		System.out.println(list);
-		for(CourseTow aa:list){
-			System.out.println(aa.getVideoList());
-		}
 		md.addAttribute("subject", li);
 		md.addAttribute("courses", list);
 		return "/front/course/index";
