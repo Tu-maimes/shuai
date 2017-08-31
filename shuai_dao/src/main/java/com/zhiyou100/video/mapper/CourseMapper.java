@@ -2,6 +2,8 @@ package com.zhiyou100.video.mapper;
 
 import com.zhiyou100.video.model.Course;
 import com.zhiyou100.video.model.CourseExample;
+import com.zhiyou100.video.model.CourseTow;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -31,5 +33,7 @@ public interface CourseMapper {
 	List<Course> selectCourse(@Param("page")Integer page);
 
 	Integer selectCoursecount();
+
+	List<CourseTow> selectVideoCourse(@Param("subjectId")int subjectId);
 
 }

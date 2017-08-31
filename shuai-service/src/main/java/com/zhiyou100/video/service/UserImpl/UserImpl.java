@@ -10,6 +10,8 @@ import com.zhiyou100.video.mapper.UserMapper;
 import com.zhiyou100.video.model.User;
 import com.zhiyou100.video.model.UserExample;
 import com.zhiyou100.video.service.UserService;
+import com.zhiyou100.video.service.tools.MailUtil;
+import com.zhiyou100.video.service.tools.VerificationCode;
 @Service
 public class UserImpl implements UserService {
 	@Autowired
@@ -56,7 +58,29 @@ public class UserImpl implements UserService {
 	}
 
 	@Override
-	public void sendemail(User user) {
+	public void sendemail(User user)  {
+		/*String base = "abcdefghijklmnopqrstuvwxyz";     
+	    Random random = new Random();     
+	    StringBuffer sb = new StringBuffer();     
+	    for (int i = 0; i <4; i++) {     
+	        int number = random.nextInt(base.length());     
+	        sb.append(base.charAt(number));     
+	    }  
+	    String sd= sb.toString();
+	    try {
+			MailUtil.send("1585019349@qq.com", "验证码",sd);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		String sd=VerificationCode.VCode("jhkshfksfksfgskkhfskjfs",4);
+		try {
+			MailUtil.send("1585019349@qq.com", "验证码",sd);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    user.setCaptcha(sd);
 		um.sendemail(user);
 	}
 

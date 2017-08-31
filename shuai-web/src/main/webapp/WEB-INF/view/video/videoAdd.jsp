@@ -50,14 +50,14 @@
 		    </div>
 		     <form action="${pageContext.request.contextPath}/video/addVideo.action" method="get" class="form-horizontal">
 		      <div class="form-group">
-		        <label for="inputEmail3" class="col-sm-2 control-label">视频标题:</label>
-		        <div class="col-sm-10">
+		        <label for="inputEmail3" class="col-md-2 control-label">视频标题:</label>
+		        <div class="col-md-10">
 		          <input type="text" class="form-control" name= "videoTitle" placeholder="请填写视频标题">
 		        </div>
 		      </div>
 		      <div class="form-group">
-		        <label for="inputPassword3" class="col-sm-2 control-label">主讲人:</label>
-		        <div class="col-sm-10">
+		        <label for="inputPassword3" class="col-md-2 control-label">主讲人:</label>
+		        <div class="col-md-10">
 				          <select class="form-control" name="speakerId">
 				          <option>请选择主讲人</option>
 							<c:forEach var="de" items="${speaker1}">
@@ -67,8 +67,8 @@
 		        </div>
 		      </div>
 		      <div class="form-group">
-		        <label for="inputEmail3" class="col-sm-2 control-label">所属课程:</label>
-		        <div class="col-sm-10">
+		        <label for="inputEmail3" class="col-md-2 control-label">所属课程:</label>
+		        <div class="col-md-10">
 				          <select class="form-control" name="courseId">
 				          <option>请选择所属课程</option>
 							<c:forEach var="de" items="${course1}">
@@ -78,27 +78,27 @@
 		        </div>
 		      </div>
 		      <div class="form-group">
-		        <label for="inputPassword3" class="col-sm-2 control-label">视频时长:</label>
-		        <div class="col-sm-10">
+		        <label for="inputPassword3" class="col-md-2 control-label">视频时长:</label>
+		        <div class="col-md-10">
 		          <input type="text" class="form-control" name="videoLength" placeholder="请填写视频时长">
 		        </div>
 		      </div>
 		      <div class="form-group">
-		        <label for="inputEmail3" class="col-sm-2 control-label">封面图片:</label>
-		        <div class="col-sm-10">
+		        <label for="inputEmail3" class="col-md-2 control-label">封面图片:</label>
+		        <div class="col-md-10">
 		          <input type="text" class="form-control" name="videoImageUrl" placeholder="请填写视频封面图片">
 		        </div>
 		      </div>
 		      <div class="form-group">
-		        <label for="inputPassword3" class="col-sm-2 control-label">视频播放地址:</label>
-		        <div class="col-sm-10">
+		        <label for="inputPassword3" class="col-md-2 control-label">视频播放地址:</label>
+		        <div class="col-md-10">
 		          <input type="text" class="form-control" name="videoUrl" placeholder="请填写视频播放地址">
 		        </div>
 		      </div>
 		      <div class="form-group">
-		        <label for="inputEmail3" class="col-sm-2 control-label">视频简介:</label>
+		        <label for="inputEmail3" class="col-md-2 control-label">视频简介:</label>
 		        <div class="bs-example" data-example-id="textarea-form-control">
-					<textarea class="col-sm-10 " rows="2" placeholder="请填写视频简介" name="videoDescr"></textarea>
+					<textarea class="col-md-10 " rows="2" placeholder="请填写视频简介" name="videoDescr"></textarea>
 			</div>
 		      </div>
 			     <div style="text-align: center;">

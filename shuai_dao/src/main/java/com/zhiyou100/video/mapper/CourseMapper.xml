@@ -20,6 +20,19 @@
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="subject_id" property="subjectId" jdbcType="INTEGER" />
     <result column="subject_name" property="subjectName" jdbcType="VARCHAR" />
+    <collection property="videoList"  ofType="com.zhiyou100.video.model.Video">
+    			<id column="vid" property="id" jdbcType="INTEGER"/>
+    <result column="video_title" property="videoTitle" jdbcType="VARCHAR" />
+    <result column="speaker_id" property="speakerId" jdbcType="INTEGER" />
+    <result column="course_id" property="courseId" jdbcType="INTEGER" />
+    <result column="video_length" property="videoLength" jdbcType="INTEGER" />
+    <result column="video_image_url" property="videoImageUrl" jdbcType="VARCHAR" />
+    <result column="video_url" property="videoUrl" jdbcType="VARCHAR" />
+    <result column="video_descr" property="videoDescr" jdbcType="VARCHAR" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="video_play_times" property="videoPlayTimes" jdbcType="INTEGER" />
+    </collection>
   </resultMap>
   
   
@@ -253,7 +266,12 @@
   
   </select>
   
+  <select id="selectVideoCourse" resultMap="BaseResult">
+  select c.course_name,c.course_descr,v.id vid,c.id,v.video_image_url,v.video_title,v.video_length,v.video_play_times from course c 
+left join video v on v.course_id=c.id where subject_id =#{subjectId}
   
+  
+  </select>
   
   
   

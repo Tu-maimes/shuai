@@ -48,12 +48,12 @@
 		    <div class="jumbotron">
 		        <h3>添加课程-课程管理</h3>
 		    </div>
-		    </div>
+		    
     <form class="form-horizontal" action="${pageContext.request.contextPath}/course/courseAdd.action">
 						  	<div style="text-align: center; width: 1200px;">
-  <div class="form-group">
-    <label class="col-sm-2 control-label" for="formGroupInputSmall">所属课程:</label>
-    <div class="col-sm-8">
+  <div class="form-group" >
+    <label class="col-md-2 control-label" for="inputEmail3">所属课程:</label>
+    <div class="col-md-8">
       <select class="form-control" name="subjectId">
     				<option>请选择所属课程</option>
 					<c:forEach var="de" items="${subject}">
@@ -64,15 +64,15 @@
     </div>
   </div>
   <div class="form-group ">
-    <label class="col-sm-2 control-label" for="formGroupInputSmall">标题:</label>
-    <div class="col-sm-8">
+    <label class="col-md-2 control-label" for="formGroupInputmdall">标题:</label>
+    <div class="col-md-8">
       <input class="form-control" type="text" name="courseName" placeholder="课程标题">
     </div>
   </div>
   <div class="form-group">
-		        <label for="inputEmail3" class="col-sm-2 control-label">简介:</label>
-		        <div class="bs-example" data-example-id="textarea-form-control">
-			  <textarea class="col-sm-8 " rows="2" placeholder="课程简介" name="courseDescr"></textarea>
+		        <label for="inputEmail3" class="col-md-2 control-label">简介:</label>
+		        <div class="bs-example" data-example-id="textarea-form-control" >
+			  <textarea class="col-md-8"  rows="2" placeholder="课程简介" name="courseDescr"></textarea>
 			 </div>
    </div>
   </div>
@@ -82,6 +82,6 @@
   </div>
   
 </form>
-    
+    </div>
 	</body>
 </html>

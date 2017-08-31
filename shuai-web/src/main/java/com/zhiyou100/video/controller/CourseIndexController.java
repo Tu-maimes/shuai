@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.zhiyou100.video.model.Course;
+import com.zhiyou100.video.model.CourseTow;
 import com.zhiyou100.video.model.Speaker;
 import com.zhiyou100.video.model.Subject;
 import com.zhiyou100.video.model.Video;
@@ -33,14 +34,18 @@ public class CourseIndexController {
 	@RequestMapping(value="front/course/index.do",method=RequestMethod.GET)
 	public String webCourse(Model md,int subjectId){
 		Subject li = cis.selectCourse(subjectId);
-		List<Course> course=cs.selectCs(subjectId);
-		for (Course course2 : course) {
-			course2.setVideoList(vs.selectVideoP(course2.getId()));
+//		List<Course> course=cs.selectCs(subjectId);
+//		for (Course course2 : course) {
+//			course2.setVideoList(vs.selectVideoP(course2.getId()));
+//		}
+	
+		List<CourseTow> list= cs.selectVideoCourse(subjectId);
+		System.out.println(list);
+		for(CourseTow aa:list){
+			System.out.println(aa.getVideoList());
 		}
-		
-//		List<VideoAll> list= vs.selectVideoCourse(subjectId);
 		md.addAttribute("subject", li);
-		md.addAttribute("courses", course);
+		md.addAttribute("courses", list);
 		return "/front/course/index";
 		
 	}

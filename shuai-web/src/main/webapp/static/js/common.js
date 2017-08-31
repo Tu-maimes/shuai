@@ -72,7 +72,9 @@ $(function(){
 				console.log(result);
 				if(result=="success"){
 					//注册成功,刷新页面
-					location.reload();
+					/*location.reload();*/
+					$("#denglu").text("恭喜你注册成功");
+					setTimeout("location.reload()",3000);
 				}else{
 					$("#denglu").text("此邮箱已存在,请更换邮箱");
 				}
@@ -99,6 +101,7 @@ $(function(){
 			password:'密码是必须填写的，3-30个字符',
 			pswAgain:'两次密码必须输入一致'
 		}
-	});	
+	});
+	
 	
 });

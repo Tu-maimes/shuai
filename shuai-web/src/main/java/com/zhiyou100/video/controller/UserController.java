@@ -3,7 +3,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -20,8 +19,19 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.zhiyou100.video.model.User;
 import com.zhiyou100.video.service.UserService;
-import com.zhiyou100.video.web.MailUtil.MailUtil;
 
+/**   
+*    
+* 项目名称：shuai-web   
+* 类名称：UserController   
+* 类描述：   前台用户web
+* 创建时间：2017年8月30日 下午9:32:22   
+* 修改人：汪帅   
+* 修改时间：2017年8月30日 下午9:32:22   
+* 修改备注：   
+* @version    
+*    
+*/
 @Controller
 public class UserController {
 	@Autowired
@@ -39,6 +49,7 @@ public class UserController {
 		return "redirect:/front/user.do";
 	}
 	/*忘记密码*/
+	
 	@RequestMapping(value="front/user/forgetpwd.do",method=RequestMethod.GET)
 	public String forgetpwd(){
 		
@@ -116,6 +127,7 @@ public class UserController {
 			return "error";
 		}
 			pe.setPassword(newPasswordAgain);
+			pe.setUpdateTime(new Date(System.currentTimeMillis()));
 			us.updateProfile(pe);
 			hs.invalidate();
 		return "success";
@@ -138,7 +150,6 @@ public class UserController {
 	@RequestMapping(value="front/user/profile.do",method=RequestMethod.POST)
 	public String profile(User user,Model md){
 		user.setInsertTime(new Date(System.currentTimeMillis()));
-		user.setUpdateTime(new Date(System.currentTimeMillis()));
 		us.updateProfile(user);
 		
 		User use = us.selectUserIndex(user.getId());
@@ -147,7 +158,7 @@ public class UserController {
 	}
 	/*上传头像*/
 	@RequestMapping(value="front/user/avatar.do",method=RequestMethod.POST)
-	public String updatatouser(User user,MultipartFile image_file) throws  IOException{
+	public String updatatouser(User user,MultipartFile image_file,HttpSession hs) throws  IOException{
 		String str = UUID.randomUUID().toString().replaceAll("-","");
 		String ext = FilenameUtils.getExtension(image_file.getOriginalFilename());
 		if(ext != "")
@@ -158,22 +169,25 @@ public class UserController {
 		user.setHeadUrl(fileName);
 		}
 		us.updatHeadUrl(user);
+		User use = us.selectUserIndex(user.getId());
+		hs.setAttribute("_front_user",use);
 		return "/front/user/avatar";
 	}
 	/*发送验证码*/
 	@RequestMapping(value="sendemail.do",method=RequestMethod.POST)
 	@ResponseBody
 	public String sendemail(User user,Model md) throws Exception{
-		String base = "abcdefghijklmnopqrstuvwxyz";     
-	    Random random = new Random();     
-	    StringBuffer sb = new StringBuffer();     
-	    for (int i = 0; i <4; i++) {     
-	        int number = random.nextInt(base.length());     
-	        sb.append(base.charAt(number));     
-	    }  
-	    String sd= sb.toString();
-	    MailUtil.send("1585019349@qq.com", "验证码",sd);
-	    user.setCaptcha(sd);
+//		String base = "abcdefghijklmnopqrstuvwxyz";     
+//	    Random random = new Random();     
+//	    StringBuffer sb = new StringBuffer();     
+//	    for (int i = 0; i <4; i++) {     
+//	        int number = random.nextInt(base.length());     
+//	        sb.append(base.charAt(number));     
+//	    }  
+//	    String sd= sb.toString();
+//	    MailUtil.send("1585019349@qq.com", "验证码",sd);
+//	    user.setCaptcha(sd);
+		
 	    us.sendemail(user);
 		return "success";
 	}

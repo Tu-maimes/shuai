@@ -2,6 +2,7 @@ package com.zhiyou100.video.controller;
 
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -26,6 +27,7 @@ import com.zhiyou100.video.service.tools.Page;
 @Controller
 @RequestMapping("/video")
 public class VideoController {
+	
 	@Autowired
 	VideoService vs;
 	@Resource(name="Course")
@@ -73,6 +75,7 @@ public class VideoController {
 			}
 			@RequestMapping("/addVideo.action")
 			public String addVideo(Video vd){
+				vd.setInsertTime(new Date(System.currentTimeMillis()));
 				vs.addVideop(vd);
 				return "redirect:/video/videoList.action";
 			}
@@ -90,6 +93,7 @@ public class VideoController {
 			}
 			@RequestMapping("/videomanage.action")
 			public String updateVideovd(Video vd){
+				vd.setUpdateTime(new Date(System.currentTimeMillis()));
 				vs.updateVideovd(vd);
 				
 				return "redirect:/video/videoList.action";

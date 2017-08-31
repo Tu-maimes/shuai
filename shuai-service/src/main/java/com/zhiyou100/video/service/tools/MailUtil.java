@@ -1,4 +1,4 @@
-package com.zhiyou100.video.web.MailUtil;
+package com.zhiyou100.video.service.tools;
 
 import java.util.Date;
 import java.util.Properties;

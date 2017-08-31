@@ -36,6 +36,6 @@ public interface VideoService {
 	void addVideoStateCount(int videoId);
 
 
-//	List<VideoAll> selectVideoCourse(int subjectId);
+
 
 }

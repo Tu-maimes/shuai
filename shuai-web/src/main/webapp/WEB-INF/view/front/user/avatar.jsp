@@ -17,7 +17,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="static/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/base.css">
     <link rel="stylesheet" href="static/css/profile.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-confirm.min.css"/>
+    <script src="${pageContext.request.contextPath}/js/jquery-1.12.4.min.js"/></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"/></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-confirm.js"></script>
     <title>在线公开课-智游教育|java|大数据|HTML5|python|UI|PHP视频教程</title>
+    <script type="text/javascript">
+    $(function(){
+    	$('#upload_form').validate({
+    		/* submitHandler:function(form){
+    			//ajax提交注册信息，并且返回注册结果
+    			console.log($('#regForm').serialize());
+    			//使用ajax的post方法提交注册信息
+    			$.post(
+    					'front/user/regist.do',
+    					$('#regForm').serialize(),
+    					function(result){
+    				console.log(result);
+    				if(result=="success"){
+    					//注册成功,刷新页面
+    					location.reload();
+    				}else{
+    					$("#denglu").text("此邮箱已存在,请更换邮箱");
+    				}
+    			},'text');
+    			
+    		}, */
+    		rules:{//写校验规则的
+    			
+    			image_file:{
+    				required:true,
+    				minlength:3
+    			}
+    		},
+    		messages:{//写提示信息的
+    			
+    			image_file:'没有选择图片',
+    			
+    		}
+    	});	
+    });
+    
+    
+    
+    </script>
 </head>
 
 <body class="w100">
@@ -51,8 +94,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <form id="upload_form" enctype="multipart/form-data" method="post" action="front/user/avatar.do" >
                                 <p>请选择图像文件</p>
                                 <div>
-                                <input type="file" class="form-control" name="image_file" id="image_file" accept="image/png,image/jpeg,image/jpg"/>
-                                <input class="btn btn-primary" type="submit" value="上传" />
+                                <input type="file" class="form-control" name="image_file" id="image_file" accept="image/png,image/jpeg,image/jpg" /><span style="color: red; font-size: 15px;" id="spanid"></span>
+                                <input class="btn btn-primary submitDl" type="submit" value="上传" />
                                 <input type="hidden" name="id" value="${_front_user.id}">
                                 </div>
                             </form>

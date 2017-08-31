@@ -35,19 +35,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <span>通过注册邮箱重设密码</span>
                     </div>
                     <div class="form_back">
-                        <a href="index.do">返回立即登录</a>
+                        <a href="front/user.do">返回立即登录</a>
                     </div>
                 </div>
                 <div class="form_body">
                     <input type="email" placeholder="请输入登录邮箱" name="email" id="email">
-                    <input type="text" placeholder="请输入验证码" name="captcha">
-                    <span style="color: red; font-size: 15px;" id="denglu"></span>
+                    <input type="text" placeholder="请输入验证码" name="captcha"><span style="color: red; font-size: 15px;" id="denglu"></span>
+                    
                     <input type="button" value="发邮件获取验证码" onclick="submitEmail();">
                     <input type="submit" value="提交">
                 </div>
                 <div class="form_footer">
                     <div class="FAQ">
-                        <span>收不到邮件？查看</span><a href="#">常见问题</a>
+                        <span>收不到邮件？查看</span><a href="https://jingyan.baidu.com/article/0bc808fc67f8ce1bd485b9bc.html">常见问题</a>
                     </div>
                 </div>
             </form>

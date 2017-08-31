@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </div>
                                 <div class="form_group">
                                     <span class="dd">生&#x3000;日：</span>
-                                    <input type="date"  name="birthday" value='<fmt:formatDate value="${user.birthday}" pattern="yy-MM-dd" />'>
+                                    <input type="date"  name="birthday" value='<fmt:formatDate value="${user.birthday}" pattern="YYYY-MM-dd" />'>
                                 </div>
                                 <div class="form_group">
                                     <span class="dd">邮&#x3000;箱：</span>

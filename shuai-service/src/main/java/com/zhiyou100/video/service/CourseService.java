@@ -4,6 +4,7 @@ package com.zhiyou100.video.service;
 import java.util.List;
 
 import com.zhiyou100.video.model.Course;
+import com.zhiyou100.video.model.CourseTow;
 import com.zhiyou100.video.service.tools.Page;
 
 public interface CourseService {
@@ -21,4 +22,6 @@ public interface CourseService {
 		List<Course> selectCourseName();
 
 		List<Course> selectCs(int subjectId);
+
+		List<CourseTow> selectVideoCourse(int subjectId);
 }
