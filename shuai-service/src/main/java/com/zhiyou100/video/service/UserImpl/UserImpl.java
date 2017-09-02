@@ -75,7 +75,7 @@ public class UserImpl implements UserService {
 		}*/
 		String sd=VerificationCode.VCode("jhkshfksfksfgskkhfskjfs",4);
 		try {
-			MailUtil.send("1585019349@qq.com", "验证码",sd);
+			MailUtil.send(user.getEmail(), "验证码",sd);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -94,6 +94,13 @@ public class UserImpl implements UserService {
 	@Override
 	public void updateRestPwd(User user) {
 		um.updateByPrimaryKeySelective(user);
+	}
+
+	@Override
+	public List<User> detectionEmail(User user) {
+		UserExample example = new UserExample();
+		example.createCriteria().andEmailEqualTo(user.getEmail());
+		return um.selectByExample(example);
 	}
 
 	

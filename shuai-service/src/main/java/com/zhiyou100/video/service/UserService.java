@@ -27,6 +27,8 @@ public interface UserService {
 
 	void updateRestPwd(User user);
 
+	List<User> detectionEmail(User user);
+
 	
 
 }

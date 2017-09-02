@@ -28,7 +28,7 @@
 					</c:if>
 
 					<c:if test="${not empty sessionScope._front_user.headUrl}">
-						<img id="avatar" src="/ppt/${_front_user.headUrl}" alt="">
+						<img id="avatar" src="${_front_user.headUrl}" alt="">
 					</c:if>
 
 				</a>

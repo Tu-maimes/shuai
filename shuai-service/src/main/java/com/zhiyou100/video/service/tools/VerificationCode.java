@@ -13,7 +13,6 @@ public class VerificationCode {
 	    }  
 	    String sd= sb.toString();
 		return sd;
-	    
 	}
 
 }

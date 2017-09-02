@@ -1,13 +1,9 @@
 package com.zhiyou100.video.controller;
-import java.io.File;
-import java.io.IOException;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.zhiyou100.video.model.User;
 import com.zhiyou100.video.service.UserService;
+import com.zhiyou100.video.web.tools.ImageUpload;
 
 
 /**   
@@ -39,14 +36,14 @@ public class UserController {
 	UserService us;
 	/*主页面*/
 	@RequestMapping(value="front/user.do",method=RequestMethod.GET)
-	public String selectUser(){
+	public String selectUser(Model md){
 		
 		return "/front/index";
 	}
 	/*退出*/
 	@RequestMapping(value="front/user/logout.do",method=RequestMethod.GET)
 	public String logout(HttpSession hs){
-		hs.invalidate();
+		hs.removeAttribute("_front_user");
 		return "redirect:/front/user.do";
 	}
 	/*忘记密码*/
@@ -75,6 +72,10 @@ public class UserController {
 	public String selectUser(String email,String password,User user,HttpSession hs){
 		user.setEmail(email);
 		user.setPassword(password);
+		List<User> li = us.detectionEmail(user);
+		if(li.size()==0){
+			return "no";
+		}
 		List<User> list = us.selectUser(user);
 		if(list.size()==0){
 			return "error";
@@ -130,7 +131,7 @@ public class UserController {
 			pe.setPassword(newPasswordAgain);
 			pe.setUpdateTime(new Date(System.currentTimeMillis()));
 			us.updateProfile(pe);
-			hs.invalidate();
+			hs.removeAttribute("_front_user");
 		return "success";
 	}
 	/*@RequestMapping("front/user/password/.do")
@@ -159,17 +160,20 @@ public class UserController {
 	}
 	/*上传头像*/
 	@RequestMapping(value="front/user/avatar.do",method=RequestMethod.POST)
-	public String updatatouser(User user,MultipartFile image_file,HttpSession hs) throws  IOException{
-		String str = UUID.randomUUID().toString().replaceAll("-","");
-		String ext = FilenameUtils.getExtension(image_file.getOriginalFilename());
-		if(ext != "")
-		{
-		String fileName =str+"."+ext;
-		String path ="E:\\unload";
-		image_file.transferTo(new File(path+"\\"+fileName));
-		user.setHeadUrl(fileName);
-		}
+	public String updatatouser(User user,MultipartFile image_file,HttpSession hs) throws Exception{
+//		String str = UUID.randomUUID().toString().replaceAll("-","");
+//		String ext = FilenameUtils.getExtension(image_file.getOriginalFilename());
+//		if(ext != "")
+//		{
+//		String fileName =str+"."+ext;
+//		String path ="E:\\unload";
+//		image_file.transferTo(new File(path+"\\"+fileName));
+//		user.setHeadUrl(fileName);
+//		}
+		
+		user.setHeadUrl(ImageUpload.giveName(image_file));
 		us.updatHeadUrl(user);
+		
 		User use = us.selectUserIndex(user.getId());
 		hs.setAttribute("_front_user",use);
 		return "/front/user/avatar";

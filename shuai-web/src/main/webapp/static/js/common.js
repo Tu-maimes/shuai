@@ -35,8 +35,11 @@ $(function(){
 				if(result=="success"){
 					//登录成功,刷新页面
 					location.reload();
-				}else{
+				}else if(result=="error"){
 					$("#perroe").text("用户名或密码错误");
+				}
+				else if(result=="no"){
+					$("#perroe").text("没有该用户请确认大小写");
 				}
 			},'text');
 			

@@ -74,7 +74,7 @@
         option = {
         	    title: {
         	        x: 'center',
-        	        text: '智游公开课播放统计',
+        	        text: '智游公开课平均播放统计',
         	        subtext: '数据来源zhiyou100',
         	    },
         	    tooltip: {

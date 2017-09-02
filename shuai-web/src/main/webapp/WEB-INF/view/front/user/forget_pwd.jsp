@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <div class="form_footer">
                     <div class="FAQ">
-                        <span>收不到邮件？查看</span><a href="https://jingyan.baidu.com/article/0bc808fc67f8ce1bd485b9bc.html">常见问题</a>
+                        <span>收不到邮件？查看</span><a href="merchant/logo.do">常见问题</a>
                     </div>
                 </div>
             </form>

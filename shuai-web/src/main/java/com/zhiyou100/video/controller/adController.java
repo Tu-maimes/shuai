@@ -36,8 +36,8 @@ public class adController {
 		return "redirect:/video/videoList.action";
 	}
 	@RequestMapping("/admin/loginout.action")
-	public String logout(HttpSession admin){
-		admin.invalidate();
+	public String logout(HttpSession hs){
+		hs.removeAttribute("admin");
 		return "redirect:/login.jsp";
 	}
 	@RequestMapping("/adminMan/login.action")
